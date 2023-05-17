@@ -1,7 +1,8 @@
-#include "objeto.h"
+#include "Objeto.h"
+#include "Mesh.h"
+#include "Engine.h"
 
-Objeto::Objeto(ID3D11Device* device)
-    : m_mesh(device)
+Objeto::Objeto(ID3D11Device* device): m_mesh(device)
 {
     // Inicializar posición, rotación y escala del objeto
     m_position = XMFLOAT3(0.0f, 0.0f, 0.0f);
@@ -9,7 +10,8 @@ Objeto::Objeto(ID3D11Device* device)
     m_scale = XMFLOAT3(1.0f, 1.0f, 1.0f);
 
     // Crear y configurar los vértices del objeto
-    std::vector<Vertex> vertices;
+    std::vector<Vertex>vertices;
+
     // Agregar los vértices necesarios al vector "vertices"
     // Ejemplo:
     vertices.push_back({ XMFLOAT3(-0.5f, -0.5f, -0.5f), XMFLOAT3(0.0f, 0.0f, -1.0f) }); // Vértice 0
@@ -19,7 +21,8 @@ Objeto::Objeto(ID3D11Device* device)
     // Continuar agregando los vértices restantes
 
     // Crear y configurar los índices del objeto
-    std::vector<unsigned int> indices;
+    std::vector<unsigned int>indices;
+
     // Agregar los índices necesarios al vector "indices"
     // Ejemplo:
     indices.push_back(0);  // Vértice 0
