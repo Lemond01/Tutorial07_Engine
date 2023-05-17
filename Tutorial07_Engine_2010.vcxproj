@@ -373,12 +373,14 @@
   </ItemDefinitionGroup>
   <ItemGroup />
   <ItemGroup>
+    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Tutorial07_Engine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tutorial07_Engine.fx" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine.h" />
     <CLInclude Include="resource.h" />
     <ResourceCompile Include="Tutorial07_Engine.rc" />
   </ItemGroup>
