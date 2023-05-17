@@ -374,6 +374,7 @@
   <ItemGroup />
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Tutorial07_Engine.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -381,6 +382,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Mesh.h" />
     <CLInclude Include="resource.h" />
     <ResourceCompile Include="Tutorial07_Engine.rc" />
   </ItemGroup>
