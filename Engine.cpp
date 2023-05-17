@@ -28,6 +28,8 @@ XMFLOAT4 g_vMeshColor(0.7f, 0.7f, 0.7f, 1.0f);
 HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
+Objeto* object;
+
 //--------------------------------------------------------------------------------------
 // Entry point to the program. Initializes everything and goes into a message processing 
 // loop. Idle time is used to render the scene.
@@ -112,6 +114,7 @@ HRESULT InitWindow(HINSTANCE hInstance, int nCmdShow)
 //--------------------------------------------------------------------------------------
 HRESULT InitDevice()
 {
+    
     HRESULT hr = S_OK;
 
     RECT rc;
@@ -267,7 +270,7 @@ HRESULT InitDevice()
     pPSBlob->Release();
     if (FAILED(hr))
         return hr;
-
+    /*
     // Create vertex buffer
     SimpleVertex vertices[] =
     {
@@ -351,14 +354,16 @@ HRESULT InitDevice()
     hr = g_pd3dDevice->CreateBuffer(&bd, &InitData, &g_pIndexBuffer);
     if (FAILED(hr))
         return hr;
-
+    
     // Set index buffer
     g_pImmediateContext->IASetIndexBuffer(g_pIndexBuffer, DXGI_FORMAT_R16_UINT, 0);
 
     // Set primitive topology
     g_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
+    */
     // Create the constant buffers
+    D3D11_BUFFER_DESC bd;
+    ZeroMemory(&bd, sizeof(bd));
     bd.Usage = D3D11_USAGE_DEFAULT;
     bd.ByteWidth = sizeof(CBNeverChanges);
     bd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -376,7 +381,7 @@ HRESULT InitDevice()
     hr = g_pd3dDevice->CreateBuffer(&bd, NULL, &g_pCBChangesEveryFrame);
     if (FAILED(hr))
         return hr;
-
+       
     // Load the Texture
     hr = D3DX11CreateShaderResourceViewFromFile(g_pd3dDevice, L"seafloor.dds", NULL, NULL, &g_pTextureRV, NULL);
     if (FAILED(hr))
@@ -415,6 +420,8 @@ HRESULT InitDevice()
     CBChangeOnResize cbChangesOnResize;
     cbChangesOnResize.mProjection = XMMatrixTranspose(g_Projection);
     g_pImmediateContext->UpdateSubresource(g_pCBChangeOnResize, 0, NULL, &cbChangesOnResize, 0, 0);
+
+    object = new Objeto(g_pd3dDevice, g_pImmediateContext);
 
     return S_OK;
 }
@@ -465,7 +472,7 @@ void Render()
     }
 
     // Rotate cube around the origin
-    g_World = XMMatrixRotationY(t);
+    //g_World = XMMatrixRotationY(t);
 
     // Modify the color
     g_vMeshColor.x = (sinf(t * 1.0f) + 1.0f) * 0.5f;
@@ -486,10 +493,13 @@ void Render()
     //
     // Update variables that change once per frame
     //
+
+    /*
     CBChangesEveryFrame cb;
     cb.mWorld = XMMatrixTranspose(g_World);
     cb.vMeshColor = g_vMeshColor;
     g_pImmediateContext->UpdateSubresource(g_pCBChangesEveryFrame, 0, NULL, &cb, 0, 0);
+    */
 
     //
     // Render the cube
@@ -502,7 +512,9 @@ void Render()
     g_pImmediateContext->PSSetConstantBuffers(2, 1, &g_pCBChangesEveryFrame);
     g_pImmediateContext->PSSetShaderResources(0, 1, &g_pTextureRV);
     g_pImmediateContext->PSSetSamplers(0, 1, &g_pSamplerLinear);
-    g_pImmediateContext->DrawIndexed(36, 0, 0);
+    //g_pImmediateContext->DrawIndexed(36, 0, 0);
+
+    object->Render(g_pImmediateContext, g_pCBChangesEveryFrame);
 
     //
     // Present our back buffer to our front buffer

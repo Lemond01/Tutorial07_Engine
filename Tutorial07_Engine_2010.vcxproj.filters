@@ -17,9 +17,11 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Objeto.h" />
+    <ClInclude Include="Structures.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Tutorial07_Engine.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Objeto.cpp" />

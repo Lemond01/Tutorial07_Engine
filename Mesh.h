@@ -3,6 +3,7 @@
 #include <d3d11.h>
 #include <xnamath.h>
 #include <vector>
+#include "Structures.h"
 
 struct Vertex
 {
@@ -14,13 +15,14 @@ struct Vertex
 class Mesh
 {
 public:
-    Mesh(ID3D11Device* device, const std::vector<Vertex>& vertices, const std::vector<WORD>& indices);
+    Mesh(ID3D11Device* device, const std::vector<SimpleVertex>& vertices, const std::vector<WORD>& indices, ID3D11Buffer* vB, ID3D11Buffer* iB);
     ~Mesh();
 
     void Render(ID3D11DeviceContext* context);
-
+    UINT getVertexCount() { return m_vertexCount; }
+    
 private:
-    void CreateVertexBuffer(ID3D11Device* device, const std::vector<Vertex>& vertices);
+    void CreateVertexBuffer(ID3D11Device* device, const std::vector<SimpleVertex>& vertices);
     void CreateIndexBuffer(ID3D11Device* device, const std::vector<WORD>& indices);
 
     ID3D11Buffer* m_pVertexBuffer;
