@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "Engine.h"
 #include "Mesh.h"
 
@@ -17,7 +17,7 @@ private:
     XMFLOAT3 m_rotation;
     XMFLOAT3 m_scale;
 };
-
+*/
 
 
 

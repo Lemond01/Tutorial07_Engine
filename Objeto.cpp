@@ -1,3 +1,4 @@
+/*
 #include "Objeto.h"
 #include "Mesh.h"
 #include "Engine.h"
@@ -58,3 +59,4 @@ void Objeto::Render(ID3D11DeviceContext* context)
     // Renderizar el objeto llamando al método Render de la clase Mesh
     m_mesh.Render(context, worldMatrix);
 }
+*/
