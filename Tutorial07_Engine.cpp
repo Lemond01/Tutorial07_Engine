@@ -622,6 +622,8 @@ void Render()
 */
 
 #include "Engine.h"
+
+/*
 //--------------------------------------------------------------------------------------
 // Entry point to the program. Initializes everything and goes into a message processing 
 // loop. Idle time is used to render the scene.
@@ -686,6 +688,4 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
     return 0;
 }
-
-
-//holaaaaaa
+*/

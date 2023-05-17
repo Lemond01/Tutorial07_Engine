@@ -29,6 +29,9 @@ struct CBChangesEveryFrame
     XMFLOAT4 vMeshColor;
 };
 
+
+
+
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow);
 HRESULT InitWindow(HINSTANCE hInstance, int nCmdShow);
 HRESULT InitDevice();
