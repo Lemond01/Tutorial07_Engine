@@ -1,5 +1,5 @@
 #pragma once
-#include "mesh.h"
+#include "Mesh.h"
 
 Mesh::Mesh(ID3D11Device* device, const std::vector<Vertex>& vertices, const std::vector<WORD>& indices)
 {

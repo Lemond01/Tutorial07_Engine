@@ -16,11 +16,13 @@
   <ItemGroup>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Objeto.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tutorial07_Engine.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Objeto.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tutorial07_Engine.fx">
